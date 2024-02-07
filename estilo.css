@@ -1,0 +1,44 @@
+body {
+    background-image: url('media/images.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  
+}
+
+h1 {
+    text-align: center;
+    color: #e2dcdc; 
+    font-family: serif;
+    background-color: #61b29d;
+}
+
+#form {
+
+    margin-bottom: 20px;
+    color: #000000; 
+    background-color: #abd4ce;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    max-width: 400px; 
+}
+
+#boton {
+    text-align: center;
+    margin-top: 2%;
+    font-weight: bold;
+}
+
+#pokemonInfo h4{
+    margin-left: 8%;
+}
+
+#pokemonInfo p{
+    margin-left: 16%;
+}
+
+#pokemonInfo img{
+    margin-left: 25%;
+    width: 200px;
+}
