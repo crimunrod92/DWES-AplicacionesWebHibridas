@@ -1,12 +1,3 @@
-<?php /**
- * Cliente para buscar información de un Pokémon en la PokeAPI.
- * 
- * @category Cliente
- * @package  Tarea 9
- * @author   Cristina Muñoz Rodríguez
- * @version  1.0
-*/
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -21,13 +12,13 @@
     <h1>POKEMON</h1>
     <div id="form">
         <!-- Formulario para buscar un Pokémon por su número -->
-        <form id="formulario">
+        <form id="formulario" onsubmit="return buscarPokemon()">
             <label for="numeroPokemon">Introduce el número del Pokemon:</label>
             <input type="number" id="numeroPokemon" name="numeroPokemon" min="1"><br><br>
             <div id="boton">
                 ¡Pulsa en la pokeball! <br><br>
-                <!-- Se llama a la función buscarPokemon() cuando se hace clic en la pokeball -->
-                <img src="media/pokeball.png" alt="Buscar Pokémon" onclick="buscarPokemon()">
+                <!-- Se llama al método submit() del formulario cuando se hace clic en la pokeball -->
+                <input type="image" src="media/pokeball.png" alt="Buscar Pokémon">
             </div>
         </form>
 
@@ -58,6 +49,9 @@
                     alert('No se pudo obtener la información del Pokémon.');
                 }
             });
+
+            // Evita que se recargue la pagina al enviar el formulario
+            return false;
         }
 
         /**
@@ -75,3 +69,4 @@
     </script>
 </body>
 </html>
+

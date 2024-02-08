@@ -1,33 +1,34 @@
 <?php
 /**
- * Script para buscar información de un Pokémon en la PokeAPI.
+ * Función para buscar información de un Pokémon en la PokeAPI.
  * 
- * @category Buscar_pokemon
- * @package  Tarea 9
- * @author   Cristina Muñoz Rodríguez
- * @version  1.0
-*/
-
-
-// Verifica si se proporcionó el número de Pokémon en la solicitud GET.
-if (isset($_GET['numeroPokemon'])) {
-    // Obtiene el número de Pokémon de la solicitud GET.
-    $numeroPokemon = $_GET['numeroPokemon'];
-
-    // Construye la URL para consultar la API
+ * @param int $numeroPokemon El número del Pokémon que se desea buscar.
+ * @return mixed Los datos del Pokémon en formato JSON o un mensaje de error..
+ */
+function buscarPokemon($numeroPokemon) {
+    // URL para consultar la API
     $url = 'https://pokeapi.co/api/v2/pokemon/' . $numeroPokemon . '/';
 
-    // Realiza la solicitud GET a la API y obtiene la respuesta.
+    // Solicitud a la API y obtiene la respuesta.
     $response = file_get_contents($url);
 
-    // Verifica si se pudo obtener la respuesta.
+    // Verifica si se obtiene respuesta.
     if ($response === false) {
-        // Si no se pudo obtener la respuesta, devuelve un mensaje de error en formato JSON.
-        echo json_encode(['error' => 'No se pudo obtener la información del Pokémon.']);
+        // Si no hay respuesta, devuelve un mensaje de error en formato JSON.
+        return json_encode(['error' => 'No se pudo obtener la información del Pokémon.']);
     } else {
-        // Si se obtuvo la respuesta, decodifica los datos JSON y los devuelve en formato JSON.
+        // Si hay respuesta devuelve los datos en JSON.
         $pokemon = json_decode($response, true);
-        echo json_encode($pokemon);
+        return json_encode($pokemon);
     }
+}
+
+// Verifica si se proporciona el número de Pokémon en el formulario
+if (isset($_GET['numeroPokemon'])) {
+    // Obtiene el número de Pokémon del formulario
+    $numeroPokemon = $_GET['numeroPokemon'];
+
+    // Llama a la función para buscar el Pokémon y muestra el resultado.
+    echo buscarPokemon($numeroPokemon);
 } 
 ?>
